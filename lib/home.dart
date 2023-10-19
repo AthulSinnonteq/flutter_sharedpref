@@ -8,7 +8,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  String username = ''; // Add this variable
+  String username = '';
 
   @override
   void initState() {
@@ -48,7 +48,7 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text('Welcome to the Home Page!'),
+            // Text('Welcome to the Home Page!'),
             Text('Username: $username'), // Display the username
           ],
         ),
