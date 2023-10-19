@@ -18,12 +18,8 @@ class MyApp extends StatelessWidget {
           future: checkLoginStatus(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              // Show the Lottie animation while waiting
-              return Center(
-                child: Container(
-                  height: 250,
-                  width: 250,
-                  child: Lottie.asset('assets/animations/loader.json')),
+              return const Center(
+                child: CircularProgressIndicator()
               );
             } else {
               Future.delayed(Duration(seconds: 2), () {
@@ -35,7 +31,7 @@ class MyApp extends StatelessWidget {
                   }
                 }
               });
-              // Show another Lottie animation during the delay
+              // Show Lottie animation during the delay
               return Center(
                 child: Container(
                   height: 250,
@@ -50,10 +46,9 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// Rest of the code remains the same as before
-
 Future<bool> checkLoginStatus() async {
   final prefs = await SharedPreferences.getInstance();
   final isLoggedIn = prefs.getBool('isLoggedIn') ?? false;
+  print('LOGIN_FLAG $isLoggedIn');
   return isLoggedIn;
 }
